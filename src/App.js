@@ -57,13 +57,13 @@ const Box = styled.div`
 export default function App(){
 
 const [dog, setDog] = useState()
-const [test, setTest] = useState(false)
+const [stateImg, setStateImg] = useState(false)
 
 function DogList(){
   axios.get(`https://dog.ceo/api/breeds/image/random`).then((response) =>{
     setDog(response.data.message)
+    setStateImg(true)
   })
-  setTest(true)
 }
 
 
@@ -73,7 +73,7 @@ function DogList(){
     <Title>Faça o seu dia mais feliz com apenas um clique :)</Title>
     <Box>
       <Button onClick={()=>{DogList()}}>Clique aqui</Button>
-      {test && <img src={dog} alt="Foto aleatória de um doguinho"/>}
+      {stateImg && <img src={dog} alt="Foto aleatória de um doguinho"/>}
     </Box>
     
     </>
